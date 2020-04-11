@@ -1,11 +1,4 @@
-<!--
- * @Author: your name
- * @Date: 2020-04-10 11:22:32
- * @LastEditTime: 2020-04-10 14:55:07
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /tt/web/src/views/Messages.vue
- -->
+
 
 <template>
   <div class="messages">
@@ -16,7 +9,31 @@
       <contentslot>
         <span slot="title">在线留言</span>
         <article slot="article">
-          this is message
+          <div class="card">
+            <div class="header">
+              提交留言
+            </div>
+            <el-form id="form" :label-position="labelPosition" label-width="110px" :model="formLabelAlign">
+              <el-form-item label="姓名">
+                <el-input v-model="formLabelAlign.name" placeholder="请输入您的姓名"></el-input>
+              </el-form-item>
+              <el-form-item label="电话">
+                <el-input v-model="formLabelAlign.tel" placeholder="请输入电话号码"></el-input>
+              </el-form-item>
+              <el-form-item label="邮箱">
+                <el-input v-model="formLabelAlign.email" placeholder="请输入邮箱地址"></el-input>
+              </el-form-item>
+              <el-form-item label="其他联系方式">
+                <el-input v-model="formLabelAlign.other" placeholder="请输入其他联系方式"></el-input>
+              </el-form-item>
+              <el-form-item label="留言内容">
+                <el-input  type="textarea" v-model="formLabelAlign.msg" placeholder="请输入留言内容"></el-input>
+              </el-form-item>
+              <el-form-item >
+                <el-button type="primary">提交信息</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
         </article>
       </contentslot>
     </section>
@@ -33,7 +50,15 @@ export default {
         backgroundImage: "url(" + require("../assets/images/about.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
-      }
+      },
+      labelPosition: 'left',
+        formLabelAlign: {
+          name: '111',
+          tel: '222',
+          email: '333',
+          oteher:'',
+          msg:''
+        }
     }
   },
   components:{
@@ -60,4 +85,28 @@ export default {
   .article{
     flex: 1;
   }
+  article{
+    padding: 15px;
+  }
+  .card{
+    border:1px solid #ddd;
+  }
+  .header{
+    line-height: 60px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    background: #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  .el-form{
+    // padding-top:15px ;
+  }
+  .el-form-item{
+    padding: 15px 20px;
+    margin:0;
+    border-bottom: 1px solid #ddd;
+  }
+  
 </style>
