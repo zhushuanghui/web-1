@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-10 11:22:32
- * @LastEditTime: 2020-04-10 22:18:13
+ * @LastEditTime: 2020-04-11 13:42:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /tt/web/src/views/Messages.vue
@@ -72,7 +72,7 @@ export default {
     return{
       img,
       bg: {
-        backgroundImage: "url(" + require("../assets/images/1.jpg") + ")",
+        backgroundImage: "url(" + require("../assets/images/about.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
       }

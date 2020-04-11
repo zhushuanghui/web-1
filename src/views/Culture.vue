@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-10 15:31:45
- * @LastEditTime: 2020-04-10 19:33:35
- * @LastEditors: your name
+ * @LastEditTime: 2020-04-11 13:41:57
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /tt/web/src/views/Culture.vue
  -->
@@ -28,7 +28,7 @@ export default {
   data(){
     return{
       bg: {
-        backgroundImage: "url(" + require("../assets/images/1.jpg") + ")",
+        backgroundImage: "url(" + require("../assets/images/about.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
       }
