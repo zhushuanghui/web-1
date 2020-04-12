@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-07 21:42:48
- * @LastEditTime: 2020-04-11 13:24:52
+ * @LastEditTime: 2020-04-12 16:51:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /web/src/views/Home.vue
@@ -15,7 +15,8 @@
           <img :src= "logo"  alt="">
         </div>
         <div class="nav-menu">
-          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" router>
+          <el-menu :default-active="activeIndex"
+            class="el-menu-demo" mode="horizontal" router>
           <el-menu-item index="/home" >网站首页</el-menu-item>
           <el-menu-item index="/about">关于我们</el-menu-item>
           <el-menu-item index="/culture">企业文化</el-menu-item>
@@ -97,7 +98,10 @@ export default {
     line-height: 60px;
     display: flex;
     justify-content: space-between;
-
+    margin-bottom: 5px;
+    .el-menu.el-menu--horizontal{
+      border-bottom:none
+    }
     .logo{
       height: 60px;
       overflow: hidden;
@@ -108,7 +112,7 @@ export default {
     }
   }
   .el-main{
-    min-height: calc(100vh - 260px);
+    min-height: calc(100vh - 60px);
     margin:0;
     padding: 0;
   }
