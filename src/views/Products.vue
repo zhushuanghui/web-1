@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-10 11:22:32
- * @LastEditTime: 2020-04-10 21:48:09
+ * @LastEditTime: 2020-04-13 23:30:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /tt/web/src/views/Messages.vue
@@ -12,14 +12,14 @@
       <!-- <img :src="banner" alt=""> -->
     </div>
     <section class="content">
-      <ul class="menu-top flex">
+      <!-- <ul class="menu-top flex">
         <li v-for="item in 5" :key="item">
           <div class="item-top" :style="bg1">
             
           </div>
           <p class="title">网站服务</p>
         </li>
-      </ul>
+      </ul> -->
 
       <div class="products">
         <h2> 产品中心</h2>
