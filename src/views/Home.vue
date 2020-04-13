@@ -1,19 +1,56 @@
 <template>
   <div class="home">
-    <div class="my-swiper">
-      <swiper ref="swiperTop" v-if="banners.length>1"  id="bigBanner" :options="swiperOptions">
-        <swiper-slide  v-for="banner in bannerImgs" :key="banner">
-          <!-- <video :src="banner" controls></video> -->
-          <img  class="big-item" :src="banner" alt="">
-        </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
-      </swiper>
-      <!-- <swiper :options="swiperOptionThumbs" id="thumbs" class="gallery-thumbs" ref="swiperThumbs">
-        <swiper-slide  v-for="banner in bannerImgs" :key="banner">
-          <img class="small-item" :src="banner" />
-        </swiper-slide>
-      </swiper> -->
+    <div class="home-top flex jcsb">
+      <div class="top-left">
+        <div class="left-title top-title flex jcsb ac">
+          <p>图片新闻</p>
+          <el-link :underline="false">更多</el-link>
+        </div>
+        <swiper ref="swiperTop"  class="my-swiper" v-if="banners.length>1"  :options="swiperOptions">
+          <swiper-slide  v-for="banner in bannerImgs" :key="banner">
+            <img  class="big-item" :src="banner" alt="">
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>  
+      </div>
+      <div class="top-right">
+        <el-link :underline="false" class="more" @click="handleClick">更多</el-link>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane label="公司新闻" name="first">
+            <li v-for="i in 8" :key="i" class="flex jcsb ac">
+                <span>  这是第{{i}} 条新闻内容</span>
+                <span>2020-04-{{i}}</span>
+            </li>
+          </el-tab-pane>
+          <el-tab-pane label="基层动态" name="second">
+            <li v-for="i in 8" :key="i" class="flex jcsb ac">
+                <span>  这是第{{i}} 条基层动态</span>
+                <span>2020-04-{{i}}</span>
+            </li>
+          </el-tab-pane>
+          <el-tab-pane label="媒体报道" name="third">
+            <li v-for="i in 8" :key="i" class="flex jcsb ac">
+                <span>  这是第{{i}} 条媒体报道</span>
+                <span>2020-04-{{i}}</span>
+            </li>
+          </el-tab-pane>
+          <!-- <el-tab-pane  label="更多"></el-tab-pane> -->
+        </el-tabs>
+      </div>
     </div>
+
+    <div class="home-center">
+      <div class="center-title">
+        参建项目
+      </div>
+      <div class="project-list flex">
+        <li v-for="i in 4" :key="i" >
+          <img :src="bannerImgs[0]" alt="">
+          <span>上海迪士尼</span>
+        </li>
+      </div>
+    </div>
+    
 
     <div class="detail">
       <div class="top">
@@ -75,12 +112,16 @@ export default {
       // banners: [video1, video2, video3, video4],
       banners: [video1, video2],
       bannerImgs: [img1, img2],
+      activeName: 'second',
       service: [1, 2, 3, 4],
       news: [1, 2, 3],
       swiperOptions: {
         pagination: {
           el: '.swiper-pagination',
-          clickable: true
+          clickable: true,
+          renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+          },
         },
         observer: true,
         observeParents: true,
@@ -89,34 +130,18 @@ export default {
         //   // delay: 3000,
         //   // disableOnInteraction: false
         // },
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
-        }
       },
-      // swiperOptionThumbs: {
-      //   spaceBetween: 10,
-      //   autoplay: false,
-      //   // centeredSlides: true,
-      //   slidesPerView: 4,
-      //   // touchRatio: 0.2,
-      //   slideToClickedSlide: true,
-      //   watchSlidesVisibility: true
-      // }
+    
+    }
+  },
+  methods: {
+    handleClick(tab, event) {
+      console.log(tab, event);
     }
   },
   components: {
     Swiper,
     SwiperSlide
-  },
-  mounted () {
-    // this.$nextTick(async () => {
-    //   const swiperTop = await this.$refs.swiperTop.$swiper
-    //   const swiperThumbs = await this.$refs.swiperThumbs.$swiper
-    //   console.log(swiperTop, swiperThumbs, this.$refs.swiperTop)
-    //   swiperTop.controller.control = swiperThumbs
-    //   swiperThumbs.controller.control = swiperTop
-    // })
   }
 
 }
@@ -124,46 +149,102 @@ export default {
 
 <style lang="less" scopeded>
   .home{
-    width:100%;
+    width:80%;
+    min-width: 1280px;
+    margin:0 auto;
+    box-sizing: border-box;
+  }
+  .home-top{
+    margin-bottom: 40px;
+    box-sizing: border-box;
+  }
+  .top-right,.top-left{
+    width: 48%;
+  }
+  .top-title{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    height: 40px;
+  }
+  .top-right .el-tabs__header {
+    margin: 0 0 20px;
   }
   .my-swiper{
-    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 320px;
+    }
   }
-  #bigBanner {
-    height: calc(100vh - 80px);
-    min-height: 700px;
+  .swiper-pagination{
+    padding: 0 10px;
+    box-sizing: border-box;
+    text-align: right;
+  }
+  .swiper-pagination-bullet{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 0;
+    opacity: 0.5;
+    color: #fff;
+  }
+  .swiper-pagination-bullet .swiper-pagination-bullet-active{
+    background:red;
+  }
 
-    .swiper-slide{
-      height: 100%;
-    }
-    .big-item{
-      width: 100%;
-      height: 100%;
-    }
-    video{
-      width: 100%;
-      height: 100%;
+  .top-right{
+    position: relative;
+
+    .more{
+      position: absolute;
+      right: 0;
+      top: 20px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 999;
     }
   }
-  #thumbs{
-    position: absolute;
-    bottom: 20px;
-    width: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-    .small-item{
-      width: 200px;
-      height: 100px;
-    }
-    .swiper-slide {
+  
+
+  .el-tab-pane li{
+    height: 40px;
+    border-bottom:1px solid #efefef;
+  }
+
+  .center-title{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .project-list{
+    li{
       width: 25%;
-      height: 100%;
-      opacity: 0.4;
-    }
-    .swiper-slide-active {
-      opacity: 1;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      border:1px solid #fff;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+      span{
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        padding: 3px;
+        background: rgba(16, 117, 184, 0.774);
+        color: #fff;
+      }
     }
   }
+
+
+
   .detail{
     .top{
       text-align: center;

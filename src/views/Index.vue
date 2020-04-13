@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-07 21:42:48
- * @LastEditTime: 2020-04-12 16:51:23
+ * @LastEditTime: 2020-04-13 23:10:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /web/src/views/Home.vue
@@ -11,7 +11,7 @@
   <div class="index">
     <el-container>
       <el-header height="80px">
-        <div class="logo">
+        <div class="logo flex alc">
           <img :src= "logo"  alt="">
         </div>
         <div class="nav-menu">
@@ -40,15 +40,6 @@
               <li>手机：13931140805 15075171310</li>
               <li>Email: 2212322343@qq.com 2050001400@qq.com</li>
             </ul>
-          </div>
-          <div class="right">
-            <p>友情链接</p>
-            <div class="tem_img"> 
-              <a href="" title="" target="_blank"><img :src="links" title="" alt=""></a> 
-              <a href="" title="" target="_blank"><img :src="links" title="" alt=""></a>
-              <a href="" title="" target="_blank"><img :src="links" title="" alt=""></a> 
-              <a href="" title="" target="_blank"><img :src="links" title="" alt=""></a>
-              <a href="" title="" target="_blank"><img :src="links" title="" alt=""></a> </div>
           </div>
         </div>
       </div>
@@ -91,29 +82,41 @@ export default {
 <style lang="less" scoped>
   .el-header{
     // height: 80px !important;
-    min-width: 1100px;
-    width: 65%;
+    position: fixed;
+    z-index: 999;
+    min-width: 1200px;
+    width: 100%;
     margin:0 auto;
+    padding: 0 80px;
     padding-top:20px;
     line-height: 60px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
+    background: #fff;
+    box-shadow: 5px 2px 7px #ccc;
     .el-menu.el-menu--horizontal{
       border-bottom:none
+    }
+    .el-menu.el-menu--horizontal .el-menu-item.is-active{
+      color:#007aff;
+      // border-bottom:none;
+    }
+    .el-menu--horizontal>.el-menu-item.is-active{
+      border-bottom-color:transparent;
     }
     .logo{
       height: 60px;
       overflow: hidden;
-
       img{
-        height: 100%;
+        width: 300px;
+        height: auto;
       }
     }
   }
   .el-main{
     min-height: calc(100vh - 60px);
-    margin:0;
+    margin-top:100px;
     padding: 0;
   }
   .footer{

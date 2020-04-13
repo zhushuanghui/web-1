@@ -17,3 +17,15 @@ li{
 a{
   text-decoration: none;
 }
+.flex{
+  display: flex;
+}
+.ac{
+  align-items: center;
+}
+.jcsb{
+  justify-content: space-between;
+}
+.jc{
+  justify-content: center;
+}
