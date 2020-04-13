@@ -149,8 +149,8 @@ export default {
 
 <style lang="less" scopeded>
   .home{
-    width:80%;
-    min-width: 1280px;
+    width:70%;
+    min-width: 1080px;
     margin:0 auto;
     box-sizing: border-box;
   }
@@ -204,7 +204,7 @@ export default {
       top: 20px;
       transform: translateY(-50%);
       cursor: pointer;
-      z-index: 999;
+      z-index: 11;
     }
   }
   
